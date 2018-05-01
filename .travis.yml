@@ -5,6 +5,13 @@ python:
     - 3.5
     - 3.6
 
+
 # install dependencies
 install: 
   - pip install -r requirements/dev.txt
+  - pip install codecov
+
+script:
+  - coverage erase
+  - coverage run test_webapp.py && coverage html
+  - pylint --output-format=text webapp.py
