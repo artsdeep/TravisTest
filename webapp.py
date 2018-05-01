@@ -1,6 +1,3 @@
-"""
-Simple web application to test TravisCI mechanism
-"""
 from flask import Flask
 
 HTML = """
