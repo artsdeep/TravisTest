@@ -17,9 +17,7 @@ HTML = """
 </html>
 """
 
-#  We have to disale this i pyllint, because pylint will fail our build every
-#  time it encounters this "global" variable
-app = Flask(__name__) # pylint: disable=invalid-name
+app = Flask(__name__)
 
 
 @app.route('/')
