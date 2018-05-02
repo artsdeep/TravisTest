@@ -12,7 +12,7 @@ HTML = """
         <meta name="author" content="Michal Dyzma">
     </head>
     <body>
-        <h1>Home Page</h1>
+        <h2>Home Page</h2>
     </body>
 </html>
 """
