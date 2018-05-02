@@ -16,3 +16,8 @@ script:
   - coverage run test_webapp.py && coverage html
 #  - pylint --output-format=text webapp.py
 
+ deploy:
+   - provider: heroku 
+     api_key:
+        secure: Bsny+kJmxYuijK6CU4LGydYqtNEzMszTaX42a6KGK9w7zqvubAT7K9YJsc/FEfcqMaBdpNEhYJy1XTcELKxhUL3rboUmnLG7i0+zRopcE1D/HPrjqi+GS7YkfW+esDueNPeljeKjUcl5QfbveHKtxVIjr5RPyT5d8+RnSfrEbdSHfv9JHOSoUkccyvVszhqdrdSLmeBELWYDD/s4oKDgB1hALLJtprYp3cKQFK34em3njSkVrDCam6AKCtWQrEYB5dONZeu/9WcikIobLZk0JmcCT09VaEd03EmUFC/AGMLsowdnkhCeytYdxXYTzzGNAe2wb2RrH5lnxx/9J27fu7pAbsNq7CMu2Dnrlas1ZNn2NNIhYpyshd8AV7rPT4tvaesvS/D3r2+taT3RZ71bqALToks61NnybyQanqXcTxFxX9/cPy2+UkjrUxpeCBOMTGVkeKIuKhdPuuFSUA1MCUXqcjw/BnLvuV+E5Z3pjV59w8mjbFk3LswhRmkWKfzmX6e9oBr5hAdfD3XO/FbWVT2NTdD5v2eDFE3Wq6UXxf8iIKDommNfVd3C6pam9dVNdN/2oJyDPn6vfyvqB1j33eju0zzCym51152yPcER5hf/cz+6+N9Z4NdsAAd39Pb6AMVmEWNEvmg3XHPCVtwm3LFhaAcXcOefRPZCsml86JA=
+     app: TravisTest 
