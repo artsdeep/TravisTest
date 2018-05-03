@@ -24,7 +24,15 @@ HTML = """
 #  We have to disale this i pyllint, because pylint will fail our build every
 #  time it encounters this "global" variable
 app = Flask(__name__) # pylint: disable=invalid-name
-app.config.from_object('config')
+
+POSTGRES_URL = "127.0.0.1:5432"
+POSTGRES_USER = "app_user"
+POSTGRES_PW = "app_user_pass"
+POSTGRES_DB = "app"
+DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+
+
+SQLALCHEMY_DATABASE_URI = DB_URL
 db = SQLAlchemy(app)
 class Base(db.Model):
     __abstract__  = True
