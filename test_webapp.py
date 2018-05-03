@@ -3,7 +3,6 @@ from mod import app
 # from webapp import app
 # from webapp import home
 
-
 class HomeViewTest(unittest.TestCase):
 
     def setUp(self):
@@ -12,7 +11,7 @@ class HomeViewTest(unittest.TestCase):
 
     def test_home_page(self):
         home = self.app.get('/')
-        self.assertIn('Home Page', 'Home Page')
+        self.assertIn('Home Page', str(home.data))
 
 
 if __name__ == "__main__":

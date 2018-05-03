@@ -47,11 +47,11 @@ db.create_all()
 
 
 
-from mod.models import Client
+#from mod.models import Client
 
 @app.route('/')
 def home():
-    print(str(db.session.query(Client).count()))
+    #print(str(db.session.query(Client).count()))
 
     """ Main route to the web app
     """
@@ -59,11 +59,11 @@ def home():
 @app.route('/h')
 def home1():
 
-    print(str(db.session.query(Client).count()))
-    i = db.session.query(Client).count()+1
-    cl = Client(id=i, name="nameclient")
-    db.session.add(cl)
-    db.session.commit()
+    #print(str(db.session.query(Client).count()))
+    #i = db.session.query(Client).count()+1
+    #cl = Client(id=i, name="nameclient")
+    #db.session.add(cl)
+    #db.session.commit()
     """ Main route to the web app
     """
     return HTML
