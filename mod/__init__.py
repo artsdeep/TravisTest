@@ -3,28 +3,6 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-POSTGRES_URL = "127.0.0.1:5432"
-POSTGRES_USER = "app_user"
-POSTGRES_PW = "app_user_pass"
-POSTGRES_DB = "app"
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
-
-#SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
-if os.environ.get('DATABASE_URL') is None:
-    SQLALCHEMY_DATABASE_URI = DB_URL
-else:
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']+"?sslmode=require"
-print(SQLALCHEMY_DATABASE_URI+"!!!")
-DATABASE_CONNECT_OPTIONS = {}
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-THREADS_PER_PAGE = 2
-
-CSRF_ENABLED = True
-
-CSRF_SESSION_KEY = "secret"
-
-SECRET_KEY = "secret"
 
 HTML = """
 <!DOCTYPE html>
@@ -46,7 +24,7 @@ HTML = """
 #  We have to disale this i pyllint, because pylint will fail our build every
 #  time it encounters this "global" variable
 app = Flask(__name__) # pylint: disable=invalid-name
-
+app.config.from_object('config')
 db = SQLAlchemy(app)
 
 db.create_all()
