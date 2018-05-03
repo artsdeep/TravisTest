@@ -1,4 +1,21 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+import os
+POSTGRES_URL = "127.0.0.1:5432"
+POSTGRES_USER = "app_user"
+POSTGRES_PW = "app_user_pass"
+POSTGRES_DB = "app"
+DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+
+#SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
+if os.environ.get('DATABASE_URL') is None:
+    SQLALCHEMY_DATABASE_URI = DB_URL
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']+"?sslmode=require"
+print(SQLALCHEMY_DATABASE_URI)
+#SQLALCHEMY_DATABASE_URI =DB_URL
+DATABASE_CONNECT_OPTIONS = {}
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 HTML = """
 <!DOCTYPE html>
@@ -21,7 +38,7 @@ HTML = """
 #  time it encounters this "global" variable
 app = Flask(__name__) # pylint: disable=invalid-name
 
-
+db = SQLAlchemy(app)
 @app.route('/')
 def home():
     """ Main route to the web app
