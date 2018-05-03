@@ -1,4 +1,4 @@
-from mod import db
+from mod import db, app
 
 class Base(db.Model):
     __abstract__  = True

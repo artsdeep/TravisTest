@@ -3,8 +3,6 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-from mod.models import Client
-
 POSTGRES_URL = "127.0.0.1:5432"
 POSTGRES_USER = "app_user"
 POSTGRES_PW = "app_user_pass"
@@ -48,6 +46,8 @@ db.drop_all()
 db.create_all()
 
 
+
+from mod.models import Client
 
 
 @app.route('/')
