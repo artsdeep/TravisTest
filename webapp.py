@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
-
+from models import Client
 
 
 POSTGRES_URL = "127.0.0.1:5432"
