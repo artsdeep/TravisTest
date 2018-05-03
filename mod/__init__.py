@@ -26,6 +26,14 @@ HTML = """
 app = Flask(__name__) # pylint: disable=invalid-name
 app.config.from_object('config')
 db = SQLAlchemy(app)
+class Base(db.Model):
+    __abstract__  = True
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+
+class Client(Base):
+    __tablename__ = 'client'
+    name = db.Column(db.String(128),  nullable=False)
 
 db.create_all()
 
@@ -38,7 +46,7 @@ def home():
     return HTML
 @app.route('/h')
 def home1():
-    from mod.models import Client
+
     print(str(db.session.query(Client).count()))
     i = db.session.query(Client).count()+1
     cl = Client(id=i, name="nameclient")
