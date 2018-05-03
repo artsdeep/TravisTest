@@ -49,7 +49,6 @@ db.create_all()
 
 from mod.models import Client
 
-
 @app.route('/')
 def home():
     print(str(db.session.query(Client).count()))
