@@ -15,9 +15,16 @@ if os.environ.get('DATABASE_URL') is None:
 else:
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']+"?sslmode=require"
 print(SQLALCHEMY_DATABASE_URI+"!!!")
-#SQLALCHEMY_DATABASE_URI =DB_URL
 DATABASE_CONNECT_OPTIONS = {}
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+THREADS_PER_PAGE = 2
+
+CSRF_ENABLED = True
+
+CSRF_SESSION_KEY = "secret"
+
+SECRET_KEY = "secret"
 
 HTML = """
 <!DOCTYPE html>
