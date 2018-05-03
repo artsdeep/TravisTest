@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
+
+
+
 POSTGRES_URL = "127.0.0.1:5432"
 POSTGRES_USER = "app_user"
 POSTGRES_PW = "app_user_pass"
@@ -39,8 +42,22 @@ HTML = """
 app = Flask(__name__) # pylint: disable=invalid-name
 
 db = SQLAlchemy(app)
+
+class Base(db.Model):
+    __abstract__  = True
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
+
+class Client(Base):
+    __tablename__ = 'client'
+    name = db.Column(db.String(128),  nullable=False)
+
 db.drop_all()
 db.create_all()
+
+
+
+
 @app.route('/')
 def home():
     """ Main route to the web app
