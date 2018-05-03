@@ -34,14 +34,8 @@ DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USE
 
 SQLALCHEMY_DATABASE_URI = DB_URL
 db = SQLAlchemy(app)
-class Base(db.Model):
-    __abstract__  = True
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime,  default=db.func.current_timestamp())
 
-class Client(Base):
-    __tablename__ = 'client'
-    name = db.Column(db.String(128),  nullable=False)
+from mod.models import *
 
 db.create_all()
 
