@@ -1,5 +1,5 @@
 import unittest
-import webapp
+from mod import app
 # from webapp import app
 # from webapp import home
 
@@ -7,7 +7,7 @@ import webapp
 class HomeViewTest(unittest.TestCase):
 
     def setUp(self):
-    	self.app = webapp.app.test_client()
+    	self.app = app.test_client()
     	self.app.testing = True
 
     def test_home_page(self):
