@@ -42,12 +42,7 @@ app = Flask(__name__) # pylint: disable=invalid-name
 
 db = SQLAlchemy(app)
 
-db.drop_all()
 db.create_all()
-
-
-
-#
 
 @app.route('/')
 def home():
