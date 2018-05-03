@@ -60,8 +60,12 @@ db.create_all()
 
 @app.route('/')
 def home():
-    print(str(db.session.query(Client).count()))
 
+    print(str(db.session.query(Client).count()))
+    i = db.session.query(Client).count()+1
+    cl = Client(i, "nameclient")
+    db.session.add(cl)
+    db.session.commit()
     """ Main route to the web app
     """
     return HTML
